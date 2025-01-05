@@ -37,7 +37,16 @@ if(errorMsg) {
 
   return (
     <div>
-      { data ? data.map((dataItem, index) => <p className='font-bold' key={index}>{dataItem.title}</p>) : null }
+        <div className='fixed flex flex-col top-0 z-10 w-full items-center bg-yellow-300'>
+        <h1 className='text-3xl font-bold py-4'>Custom Scroll Indicator</h1>
+        <div className='w-full h-3 bg-green-600'>
+            <div className='h-3 bg-red-600 w-0' style={{ width: `${scrollPercentage}%`}}>
+            </div>
+            </div>
+        </div>
+        <div className='mt-24 flex flex-col items-center gap-2'>
+            { data ? data.map((dataItem, index) => <p className='font-bold' key={index}>{dataItem.title}</p>) : null }
+        </div>
     </div>
   )
 }
