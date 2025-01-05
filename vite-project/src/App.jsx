@@ -25,8 +25,22 @@ const App = () => {
     }
 }
 
+const handleScrollPercentage = () => {
+  const howMuchScrolled = document.documentElement.scrollTop || document.body.scrollTop
+  const hight = document.documentElement.scrollHeight - document.documentElement.clientHeight
+  setScrollPercentage((howMuchScrolled / hight) * 100)
+}
+
   useEffect(() => {
     fetchData()
+}, [])
+
+useEffect(() => {
+  window.addEventListener('scroll', handleScrollPercentage)
+
+  return () => {
+      window.removeEventListener('scroll', () => {});
+    }
 }, [])
 
 if (loading) {
